@@ -3,7 +3,7 @@
 ##### [Setup](#setup)
 
 ## [Groups]
-##### [Create a Group](#create)
+##### [Create a Group](#create-group-1)
 ##### [Add member to group](#addMemberToGroup)
 ##### [Remove](#removeMemberFromGroup)
 ##### [Change admin](#changeAdmin)
