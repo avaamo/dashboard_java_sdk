@@ -1,6 +1,8 @@
-# dashboard_java_sdk
+# Avaamo Dashboard SDk
 
 ##### [Setup](#setup)
+
+## [Groups]
 ##### [Create a Group](#create)
 ##### [Add member to group](#addMemberToGroup)
 ##### [Remove](#removeMemberFromGroup)
@@ -8,6 +10,7 @@
 ##### [Update group](#updateGroup)
 ##### [List of members](#members)
 
+## [Users]
 ##### [Create user](#createUser)
 ##### [Get user details](#userDetails)
 ##### [Update user details](#updatedUser)
@@ -15,6 +18,7 @@
 ##### [Get all users](#allUsers)
 ##### [Delete a user](#deleteUser)
 
+## [Broadcasts]
 ##### [Send AnnouncementCard](#AnnouncementCard)
 ##### [Send CustomCard](#CustomCard)
 
@@ -24,6 +28,8 @@ Create a instance of AvaamoDashBoard
 ```java
 AvaamoDashBoard avaamoDashboard = AvaamoDashBoard.create("<Provide your dashborad access token>");
 ```
+
+## Groups
 
 #### Create a Group
 ```java
@@ -73,6 +79,8 @@ do{
 }while(listResponse.hasEntries());
 ```
 
+## Users
+
 #### Create user
 ```java
 NewUser newuser = new NewUser();
@@ -119,6 +127,8 @@ ArrayList<User> users = response.getEntries();
 ```java
 avaamoDashboard.getUserManager().deleteUser(user_id);
 ```
+
+## Broadcasts
 
 #### Send AnnouncementCard
 ```java
