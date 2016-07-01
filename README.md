@@ -1,4 +1,4 @@
-# Avaamo Dashboard SDk
+# Avaamo Dashboard SDK
 
 ##### [Setup](#setup)
 
@@ -21,6 +21,8 @@
 ## [Broadcasts]
 ##### [Send AnnouncementCard](#AnnouncementCard)
 ##### [Send CustomCard](#CustomCard)
+##### [Get Broadcast audience](#audience)
+##### [Get All Broadcast cards](#allCards)
 
 
 #### Setup
@@ -215,4 +217,21 @@ e.printStackTrace();
 }
 
 ```
+
+#### Get Broadcast audience
+```java
+BroadcastAudienceResponse audienceResponse = new BroadcastAudienceResponse(4260);
+do{	
+	ArrayList<User> audiences = audienceResponse.getEntries();
+}while(audienceResponse.hasEntries());
+```
+
+#### Get All Broadcast cards			
+```java
+AllBroadcastCardsResponse allCardsResponse = new AllBroadcastCardsResponse(75);
+do{	
+	ArrayList<BroadcastCardResponse> broadcast_cards = allCardsResponse.getEntries();
+}while(allCardsResponse.hasEntries());
+```
+			
 
