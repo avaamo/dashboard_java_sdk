@@ -3,13 +3,13 @@
 ##### [Setup](#setup-1)
 
 ## [Groups]
-##### [Create a Group](#create-group-1)
+##### [Create a Group](#create-a-group-1)
 ##### [Add member to group](#add-member-to-group-1)
 ##### [Remove](#remove-member-from-group)
 ##### [Change admin](#change-admin-of-the-group)
 ##### [Update group](#update-group-details)
 ##### [List of members](#get-list-of-members-in-the-group)
-##### [Get list of groups](#get-list-of-groups)
+##### [Get list of groups](#get-list-of-groups-1)
 
 ## [Users]
 ##### [Create user](#create-user-1)
