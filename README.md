@@ -233,5 +233,44 @@ do{
 	ArrayList<BroadcastCardResponse> broadcast_cards = allCardsResponse.getEntries();
 }while(allCardsResponse.hasEntries());
 ```
+
+#### Fetch Poll Response
+```java
+BroadcastReplyManager replyManager = new BroadcastReplyManager(id);//Broadcast Id
+
+
+
+ArrayList<Question> questions = replyManager.getBroadcastReply().getQuestions();
+
+for (Question question : questions) {
+
+System.out.print(" "+question);
+
+}
+
+System.out.println();
+
+ArrayList<BroadcastReplyElement> replyElements = replyManager.getBroadcastReply().getResponses();
+
+for (BroadcastReplyElement broadcastReplyElement : replyElements) {
+
+System.out.println("----------------");
+
+System.out.println(""+broadcastReplyElement.getUser());
+
+ArrayList<Reply> replies  = broadcastReplyElement.getReplies();
+
+for(Reply reply:replies){
+
+System.out.print(" "+reply);
+
+}
+
+System.out.println();
+
+System.out.println("----------------");
+
+}
+```
 			
 
