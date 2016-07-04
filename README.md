@@ -1,28 +1,29 @@
 # Avaamo Dashboard SDK
 
-##### [Setup](#setup)
+##### [Setup](#setup-1)
 
 ## [Groups]
 ##### [Create a Group](#create-group-1)
-##### [Add member to group](#addMemberToGroup)
-##### [Remove](#removeMemberFromGroup)
-##### [Change admin](#changeAdmin)
-##### [Update group](#updateGroup)
-##### [List of members](#members)
+##### [Add member to group](#add-member-to-group-1)
+##### [Remove](#remove-member-from-group)
+##### [Change admin](#change-admin-of-the-group)
+##### [Update group](#update-group-details)
+##### [List of members](#get-list-of-members-in-the-group)
 
 ## [Users]
-##### [Create user](#createUser)
-##### [Get user details](#userDetails)
-##### [Update user details](#updatedUser)
-##### [Invite user](#inviteUser)
-##### [Get all users](#allUsers)
-##### [Delete a user](#deleteUser)
+##### [Create user](#create-user-1)
+##### [Get user details](#get-user-details-1)
+##### [Update user details](#update-user-details-1)
+##### [Invite user](#invite-the-user)
+##### [Get all users](#get-all-users-1)
+##### [Delete a user](#delete-a-user-1)
 
 ## [Broadcasts]
-##### [Send AnnouncementCard](#AnnouncementCard)
-##### [Send CustomCard](#CustomCard)
-##### [Get Broadcast audience](#audience)
-##### [Get All Broadcast cards](#allCards)
+##### [Send AnnouncementCard](#send-announcementcard-1)
+##### [Send CustomCard](#send-customcard-1)
+##### [Get Broadcast audience](#get-broadcast-audience-1)
+##### [Get All Broadcast cards](#get-all-broadcast-cards-1)
+##### [Fetch Poll response](#fetch-poll-response)
 
 
 #### Setup
