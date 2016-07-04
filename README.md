@@ -23,7 +23,7 @@
 ##### [Send CustomCard](#send-customcard-1)
 ##### [Get Broadcast audience](#get-broadcast-audience-1)
 ##### [Get All Broadcast cards](#get-all-broadcast-cards-1)
-##### [Fetch Poll response](#fetch-poll-response)
+##### [Fetch Poll response](#fetch-poll-response-1)
 
 
 #### Setup
