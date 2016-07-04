@@ -9,6 +9,7 @@
 ##### [Change admin](#change-admin-of-the-group)
 ##### [Update group](#update-group-details)
 ##### [List of members](#get-list-of-members-in-the-group)
+##### [Get list of groups](#get-list-of-groups)
 
 ## [Users]
 ##### [Create user](#create-user-1)
@@ -75,6 +76,14 @@ GroupResponse groupResponse = avaamoDashboard.getGroupManager().updateGroup(grou
 ```
 
 #### Get list of members in the group
+```java
+GroupMembersResponse membersResponse= new GroupMembersResponse(<group_id>);
+do{	
+    ArrayList<GroupMember> group_members = membersResponse.getEntries();
+}while(membersResponse.hasEntries());
+```
+
+#### Get list of groups
 ```java
 GroupListResponse listResponse= new GroupListResponse();
 do{	
