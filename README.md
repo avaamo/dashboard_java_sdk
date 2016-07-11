@@ -2,7 +2,7 @@
 
 ##### [Setup](#setup-1)
 
-## [Groups]
+## Groups
 ##### [Create a Group](#create-a-group-1)
 ##### [Add member to group](#add-member-to-group-1)
 ##### [Remove](#remove-member-from-group)
@@ -11,7 +11,7 @@
 ##### [List of members](#get-list-of-members-in-the-group)
 ##### [Get list of groups](#get-list-of-groups-1)
 
-## [Users]
+## Users
 ##### [Create user](#create-user-1)
 ##### [Get user details](#get-user-details-1)
 ##### [Update user details](#update-user-details-1)
@@ -19,9 +19,10 @@
 ##### [Get all users](#get-all-users-1)
 ##### [Delete a user](#delete-a-user-1)
 
-## [Broadcasts]
+## Broadcasts
 ##### [Send AnnouncementCard](#send-announcementcard-1)
 ##### [Send CustomCard](#send-customcard-1)
+##### [Send Poll](#send-poll-1)
 ##### [Get Broadcast audience](#get-broadcast-audience-1)
 ##### [Get All Broadcast cards](#get-all-broadcast-cards-1)
 ##### [Fetch Poll response](#fetch-poll-response-1)
@@ -143,6 +144,7 @@ avaamoDashboard.getUserManager().deleteUser(user_id);
 ## Broadcasts
 
 #### Send AnnouncementCard
+![image](screenshots/Announcement.png)
 ```java
 AnnouncementCard ac = new AnnouncementCard();
 
@@ -169,6 +171,7 @@ ac.addTargetUsersList(createSampleBroadcastList().getId());
 avaamoDashboard.sendBroadcast(ac);
 ```
 #### Send CustomCard
+![image](screenshots/Multi-field Card.png)
 ```java
 CustomCard customCard = new CustomCard();
 
@@ -221,11 +224,51 @@ customCard.setExpiresIn(2);
 
 customCard.addTargetUsersList(245);//Target user list id. If you don't have one create using "createSampleBroadcastList()"
 try {
-avaamoDashboard.sendBroadcast(customCard);
+  avaamoDashboard.sendBroadcast(customCard);
 } catch (IOException e) {
-e.printStackTrace();
+  e.printStackTrace();
 }
 
+```
+
+#### Send Poll
+![image](screenshots/Poll Card.png)
+```java
+CustomCard customCard = new CustomCard();
+customCard.setHeadline("Simple Poll");
+customCard.setSender(new Sender(1196,"Dashboard SDK Sender", null));
+
+// Add a poll
+Poll poll = new Poll(" What is your preference?");
+poll.addOption(0, "Yes");
+poll.addOption(1, "No");
+poll.addOption(2, "May Be");
+customCar.addQuestion(poll);
+
+		
+BroadcastList bl = new BroadcastList("Simple User List");
+bl.addUser(User.findUserByEmail("<User email>"));
+		
+// set target users
+customCard.addTargetUsersList(BroadcastListUtil.createBroadcastList(bl).getId());
+		
+// set poll expiration - in hours
+customCard.setExpiresIn(2);
+		
+BroadcastCardResponse res = avaamoDashboard.sendBroadcast(customCard);
+```
+
+#### Send Data Capture
+![image](screenshots/Data Capture.png)
+```java
+CustomCard customCard = new CustomCard();
+customCard.setHeadline("Only Data capture Card");
+customCard.setSender(new Sender(1196,"SDK Sender", null));//1196 is sender id. To create a new sender pass 0
+
+// multiline text field
+customCard.addQuestion(new DataCapture("Data capture field"));
+
+BroadcastCardResponse res = avaamoDashboard.sendBroadcast(customCard);
 ```
 
 #### Get Broadcast audience
@@ -247,39 +290,23 @@ do{
 #### Fetch Poll Response
 ```java
 BroadcastReplyManager replyManager = new BroadcastReplyManager(id);//Broadcast Id
-
-
-
 ArrayList<Question> questions = replyManager.getBroadcastReply().getQuestions();
 
 for (Question question : questions) {
-
-System.out.print(" "+question);
-
+	System.out.print(" "+question);
 }
-
 System.out.println();
 
 ArrayList<BroadcastReplyElement> replyElements = replyManager.getBroadcastReply().getResponses();
-
 for (BroadcastReplyElement broadcastReplyElement : replyElements) {
-
-System.out.println("----------------");
-
-System.out.println(""+broadcastReplyElement.getUser());
-
-ArrayList<Reply> replies  = broadcastReplyElement.getReplies();
-
-for(Reply reply:replies){
-
-System.out.print(" "+reply);
-
-}
-
-System.out.println();
-
-System.out.println("----------------");
-
+	System.out.println("----------------");
+	System.out.println(""+broadcastReplyElement.getUser());
+	ArrayList<Reply> replies  = broadcastReplyElement.getReplies();
+	for(Reply reply:replies){
+		System.out.print(" "+reply);
+	}
+	System.out.println();
+	System.out.println("----------------");
 }
 ```
 			
