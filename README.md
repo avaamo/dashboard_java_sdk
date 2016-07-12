@@ -23,6 +23,12 @@
 ##### [Send AnnouncementCard](#send-announcementcard-1)
 ##### [Send CustomCard](#send-customcard-1)
 ##### [Send Poll](#send-poll-1)
+##### [Send Data Capture](#send-data-capture-1)
+##### [Send ToDo List](#send-todo-list-1)
+##### [Send Rating Card](#send-rating-card-1)
+##### [Send Location Card](#send-location-card-1)
+##### [Send Approval Card](#send-approval-card-1)
+##### [Send Data Aggregation Card](#send-data-aggregation-card-1)
 ##### [Get Broadcast audience](#get-broadcast-audience-1)
 ##### [Get All Broadcast cards](#get-all-broadcast-cards-1)
 ##### [Fetch Poll response](#fetch-poll-response-1)
@@ -268,6 +274,122 @@ customCard.setSender(new Sender(1196,"SDK Sender", null));//1196 is sender id. T
 // multiline text field
 customCard.addQuestion(new DataCapture("Data capture field"));
 
+BroadcastCardResponse res = avaamoDashboard.sendBroadcast(customCard);
+```
+
+#### Send ToDo List
+![image](screenshots/ToDo List.png)
+```java
+CustomCard customCard = new CustomCard();
+customCard.setHeadline("Simple ToDo");
+customCard.setSender(new Sender(1196,"Dashboard SDK Sender", null));
+
+// To Do items field
+Checklist checklist = new Checklist("CheckList  field");
+checklist.addOption(0, "Option 1");
+checklist.addOption(1, "Option 2");
+customCard.addQuestion(checklist);
+
+BroadcastList bl = new BroadcastList("Simple User List");
+bl.addUser(User.findUserByEmail("<User email>"));
+		
+// set target users
+customCard.addTargetUsersList(BroadcastListUtil.createBroadcastList(bl).getId());
+		
+// set expiration - in hours
+customCard.setExpiresIn(2);
+		
+BroadcastCardResponse res = avaamoDashboard.sendBroadcast(customCard);
+```
+
+#### Send Rating Card
+![image](screenshots/Rating Card.png)
+```java
+CustomCard customCard = new CustomCard();
+customCard.setHeadline("Simple Rating Card");
+customCard.setSender(new Sender(1196,"Dashboard SDK Sender", null));
+
+// Add a rating question
+Rating rating = new Rating("Rate this sdk");
+rating.setStarCount(5);
+rating.setStartCount(2);
+customCard.addQuestion(rating);
+		
+BroadcastList bl = new BroadcastList("Simple User List");
+bl.addUser(User.findUserByEmail("<User email>"));
+		
+// set target users
+customCard.addTargetUsersList(BroadcastListUtil.createBroadcastList(bl).getId());
+		
+// set expiration - in hours
+customCard.setExpiresIn(2);
+		
+BroadcastCardResponse res = avaamoDashboard.sendBroadcast(customCard);
+```
+
+#### Send Location Card
+![image](screenshots/Location.png)
+```java
+CustomCard customCard = new CustomCard();
+customCard.setHeadline("Simple Location Card");
+customCard.setSender(new Sender(1196,"Dashboard SDK Sender", null));
+
+// Add a location question
+customCard.addQuestion(new Location("Please share your location"));
+		
+BroadcastList bl = new BroadcastList("Simple User List");
+bl.addUser(User.findUserByEmail("<User email>"));
+		
+// set target users
+customCard.addTargetUsersList(BroadcastListUtil.createBroadcastList(bl).getId());
+		
+// set expiration - in hours
+customCard.setExpiresIn(2);
+		
+BroadcastCardResponse res = avaamoDashboard.sendBroadcast(customCard);
+```
+
+#### Send Approval Card
+![image](screenshots/Approval Card.png)
+```java
+CustomCard customCard = new CustomCard();
+customCard.setHeadline("Simple Approval Card");
+customCard.setSender(new Sender(1196,"Dashboard SDK Sender", null));
+
+// yes or no question
+customCard.addQuestion(new Approval("Yes/No  field"));
+		
+BroadcastList bl = new BroadcastList("Simple User List");
+bl.addUser(User.findUserByEmail("<User email>"));
+		
+// set target users
+customCard.addTargetUsersList(BroadcastListUtil.createBroadcastList(bl).getId());
+		
+// set expiration - in hours
+customCard.setExpiresIn(2);
+		
+BroadcastCardResponse res = avaamoDashboard.sendBroadcast(customCard);
+```
+
+#### Send Data Aggregation Card
+![image](screenshots/Data Aggregation.png)
+```java
+CustomCard customCard = new CustomCard();
+customCard.setHeadline("Simple Data Aggregation Card");
+customCard.setSender(new Sender(1196,"Dashboard SDK Sender", null));
+
+// Number field
+customCard.addQuestion(new Aggregate("Enter the sales forecast this month?"));
+		
+BroadcastList bl = new BroadcastList("Simple User List");
+bl.addUser(User.findUserByEmail("<User email>"));
+		
+// set target users
+customCard.addTargetUsersList(BroadcastListUtil.createBroadcastList(bl).getId());
+		
+// set expiration - in hours
+customCard.setExpiresIn(2);
+		
 BroadcastCardResponse res = avaamoDashboard.sendBroadcast(customCard);
 ```
 
