@@ -10,6 +10,7 @@
 ##### [Update group](#update-group-details)
 ##### [List of members](#get-list-of-members-in-the-group)
 ##### [Get list of groups](#get-list-of-groups-1)
+##### [Get messages of the group](#get-messages-of-the-group-1)
 
 ## Users
 ##### [Create user](#create-user-1)
@@ -96,6 +97,18 @@ GroupListResponse listResponse= new GroupListResponse();
 do{	
 	ArrayList<Group> users = listResponse.getEntries();
 }while(listResponse.hasEntries());
+```
+
+#### Get messages of the group
+```java
+GroupMessagesResponse messagesResponse= new GroupMessagesResponse(<group_id>);
+do{	
+	ArrayList<Message> group_messages = messagesResponse.getEntries();
+	for (Iterator<Message> iterator = group_messages.iterator(); iterator.hasNext();) {
+		Message message = (Message) iterator.next();
+		System.out.println(""+message);
+	}
+}while(messagesResponse.hasEntries());
 ```
 
 ## Users
