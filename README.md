@@ -107,6 +107,13 @@ do{
 	for (Iterator<Message> iterator = group_messages.iterator(); iterator.hasNext();) {
 		Message message = (Message) iterator.next();
 		System.out.println(""+message);
+		if(message.hasAttachments()){
+			List<AttachedFile> files = message.getAttachments().get(0).files;
+			for (ListIterator<AttachedFile> iterator2 = files.listIterator(); iterator2.hasNext();) {
+				AttachedFile file = (AttachedFile) iterator2.next();
+				System.out.println(""+file);
+			}
+		}
 	}
 }while(messagesResponse.hasEntries());
 ```
