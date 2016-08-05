@@ -415,7 +415,8 @@ BroadcastCardResponse res = avaamoDashboard.sendBroadcast(customCard);
 
 #### Get Broadcast audience
 ```java
-BroadcastAudienceResponse audienceResponse = new BroadcastAudienceResponse(4260);
+//Provides list of audience of the given broadcast_card_id
+BroadcastAudienceResponse audienceResponse = new BroadcastAudienceResponse(<broadcast_card_id>);
 do{	
 	ArrayList<User> audiences = audienceResponse.getEntries();
 }while(audienceResponse.hasEntries());
@@ -423,7 +424,11 @@ do{
 
 #### Get All Broadcast cards			
 ```java
-AllBroadcastCardsResponse allCardsResponse = new AllBroadcastCardsResponse(75);
+DashboardUser dashboardUser = avaamoDashboard.getDashboardUser();
+/*dashboard_user_id can be used to fetch all broadcast cards sent by that user*/
+int dashboard_user_id = dashboardUser.getId();
+			
+AllBroadcastCardsResponse allCardsResponse = new AllBroadcastCardsResponse(dashboard_user_id);
 do{	
 	ArrayList<BroadcastCardResponse> broadcast_cards = allCardsResponse.getEntries();
 }while(allCardsResponse.hasEntries());
@@ -431,7 +436,8 @@ do{
 
 #### Fetch Poll Response
 ```java
-BroadcastReplyManager replyManager = new BroadcastReplyManager(id);//Broadcast Id
+//Check the replies from the users for the given <broadcast_card_id>
+BroadcastReplyManager replyManager = new BroadcastReplyManager(<broadcast_card_id>);
 ArrayList<Question> questions = replyManager.getBroadcastReply().getQuestions();
 
 for (Question question : questions) {
