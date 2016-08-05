@@ -9,7 +9,7 @@ import com.avaamo.dashboard.user.User;
 
 public class SamplePoll {
 	public static void main(String[] args) throws Exception{
-		AvaamoDashBoard avaamoDashboard = AvaamoDashBoard.create("DashboardSample.DASHBOARD_TOKEN");
+		AvaamoDashBoard avaamoDashboard = AvaamoDashBoard.create(DashboardSample.DASHBOARD_TOKEN);
 		
 		CustomCard customCard = new CustomCard();
 		customCard.setHeadline("Simple Poll");

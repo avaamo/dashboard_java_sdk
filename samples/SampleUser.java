@@ -30,8 +30,8 @@ public class SampleUser {
 			System.out.println("updated user phone: "+updatedUser.getPhone());
 			
 			InviteUserTemplate template = new InviteUserTemplate();
-			template.setFrom_name("Benn");
-			template.setSms_body("sms body goes here");
+			template.setFromName("Benn");
+			template.setSmsBody("sms body goes here");
 			template.setSubject("Invite from sdk dashboard");
 			template.setTemplate("Template of the invite message");
 			avaamoDashboard.getUserManager().inviteUser(user_id, template);

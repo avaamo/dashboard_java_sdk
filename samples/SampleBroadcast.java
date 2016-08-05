@@ -48,15 +48,18 @@ public class SampleBroadcast {
 			int poll_id = testApp.createAndSendPollCard(avaamoDashboard);
 			testApp.fetchPollResponse(poll_id);
 
-			//testApp.fetchBroadcastReply();
+			//testApp.fetchBroadcastReply(<broadcast_card_id>);
 			
-			BroadcastAudienceResponse audienceResponse = new BroadcastAudienceResponse(4260);
+			BroadcastAudienceResponse audienceResponse = new BroadcastAudienceResponse(<broadcast_card_id);
 			do{	
 				ArrayList<User> audiences = audienceResponse.getEntries();
 			}while(audienceResponse.hasEntries());
 			
+			DashboardUser dashboardUser = avaamoDashboard.getDashboardUser();
+			/*dashboard_user_id can be used to fetch all broadcast cards sent by that user*/
+			int dashboard_user_id = dashboardUser.getId();
 			
-			AllBroadcastCardsResponse allCardsResponse = new AllBroadcastCardsResponse(75);
+			AllBroadcastCardsResponse allCardsResponse = new AllBroadcastCardsResponse(<dashboard_user_id>);
 			do{	
 				ArrayList<BroadcastCardResponse> broadcast_cards = allCardsResponse.getEntries();
 			}while(allCardsResponse.hasEntries());
@@ -190,7 +193,7 @@ public class SampleBroadcast {
 
 	public BroadcastListModel createSampleBroadcastList() throws Exception{
 		// Every time creates new list
-		BroadcastList broadcastListRequest = new BroadcastList("Simple User LIst");
+		BroadcastList broadcastListRequest = new BroadcastList("Simple User List");
 		User user2 = User.findUserByEmail("<email>");
 		broadcastListRequest.addUser(user2);
 
@@ -200,9 +203,10 @@ public class SampleBroadcast {
 		return broadcastListResponse;
 	}
 
-	public void fetchBroadcastReply() throws IOException{
+	public void fetchBroadcastReply(int broadcast_card_id) throws IOException{
 
-		BroadcastReplyManager replyManager = new BroadcastReplyManager(4200);//Broadcast Id
+		//Check the replies from the users for the given <broadcast_card_id>
+		BroadcastReplyManager replyManager = new BroadcastReplyManager(broadcast_card_id);
 
 		ArrayList<Question> questions = replyManager.getBroadcastReply().getQuestions();
 		for (Question question : questions) {
@@ -224,7 +228,7 @@ public class SampleBroadcast {
 	}
 
 	public void fetchPollResponse(int id) throws IOException{
-		BroadcastReplyManager replyManager = new BroadcastReplyManager(id);//Broadcast Id
+		BroadcastReplyManager replyManager = new BroadcastReplyManager(id);//Poll Id
 
 		ArrayList<Question> questions = replyManager.getBroadcastReply().getQuestions();
 		for (Question question : questions) {
