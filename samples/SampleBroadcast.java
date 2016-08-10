@@ -85,8 +85,8 @@ public class SampleBroadcast {
 		ac.setSender(new Sender(1, "Sender Name", null));
 
 		//Received User can reply to these users
-		ac.addReplyTo(35545);//Passing user ids now.
-		ac.addReplyTo(36284);
+		ac.addReplyTo(User.findUserByEmail("<email of the user>").getAvaamoId());//Passing user ids now.
+		ac.addReplyTo(User.findUserByEmail("<email of the user>").getAvaamoId());
 
 		//Add attachemnts like simple link, video link and files 
 		ArrayList<BroadcastAttachment> attachments = new ArrayList<>();

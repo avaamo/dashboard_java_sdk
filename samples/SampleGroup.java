@@ -18,9 +18,9 @@ public class SampleGroup {
 		NewGroup newgroup = new NewGroup();
 		newgroup.setName("Group Name");
 		newgroup.setDescription("Group Description");
-		newgroup.addUser(User.findUserByEmail("<email of the user>").getId());//User to be added to the group
+		newgroup.addUser(User.findUserByEmail("<email of the user>").getAvaamoId());//User to be added to the group
 
-		Admin admin = new Admin(User.findUserByEmail("<email of the admin>").getId());
+		Admin admin = new Admin(User.findUserByEmail("<email of the admin>").getAvaamoId());
 		newgroup.setAdmin(admin);
 
 		try {
