@@ -101,6 +101,8 @@ do{
 
 #### Get messages of the group
 ```java
+
+AttachedFile file = null;
 GroupMessagesResponse messagesResponse= new GroupMessagesResponse(<group_id>);
 do{	
 	ArrayList<Message> group_messages = messagesResponse.getEntries();
@@ -110,12 +112,19 @@ do{
 		if(message.hasAttachments()){
 			List<AttachedFile> files = message.getAttachments().get(0).files;
 			for (ListIterator<AttachedFile> iterator2 = files.listIterator(); iterator2.hasNext();) {
-				AttachedFile file = (AttachedFile) iterator2.next();
+                file = (AttachedFile) iterator2.next();
 				System.out.println(""+file);
 			}
 		}
 	}
 }while(messagesResponse.hasEntries());
+
+//Provide folder name to which the file should be downloaded
+boolean fileDownloaded = AvaamoDashBoard.getInstance().getAttachmentUtil().downloadAttachment(file, "downloads");
+
+boolean fileDownloaded2 = AvaamoDashBoard.getInstance().getAttachmentUtil().downloadAttachment("68488",
+"Temp_file.jpeg", "downloads");
+
 ```
 
 ## Users

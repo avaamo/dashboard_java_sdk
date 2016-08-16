@@ -6,8 +6,13 @@ import com.avaamo.dashboard.AvaamoDashBoard;
 import com.avaamo.dashboard.group.Admin;
 import com.avaamo.dashboard.group.Group;
 import com.avaamo.dashboard.group.GroupListResponse;
+import com.avaamo.dashboard.group.GroupMember;
+import com.avaamo.dashboard.group.GroupMembersResponse;
+import com.avaamo.dashboard.group.GroupMessagesResponse;
 import com.avaamo.dashboard.group.GroupResponse;
 import com.avaamo.dashboard.group.NewGroup;
+import com.avaamo.dashboard.message.Message;
+import com.avaamo.dashboard.message.Message.AttachedFile;
 import com.avaamo.dashboard.user.User;
 
 public class SampleGroup {
@@ -50,7 +55,36 @@ public class SampleGroup {
 			do{	
 				ArrayList<Group> users = listResponse.getEntries();
 			}while(listResponse.hasEntries());
+            
+            
+            GroupMembersResponse membersResponse= new GroupMembersResponse(888);
+            do{
+                ArrayList<GroupMember> group_members = membersResponse.getEntries();
+            }while(membersResponse.hasEntries());
+            
+            
+            AttachedFile file = null;
+            GroupMessagesResponse messagesResponse= new GroupMessagesResponse(854);
+            do{
+                ArrayList<Message> group_messages = messagesResponse.getEntries();
+                for (Iterator<Message> iterator = group_messages.iterator(); iterator.hasNext();) {
+                    Message message = (Message) iterator.next();
+                    System.out.println(""+message);
+                    if(message.hasAttachments()){
+                        List<AttachedFile> files = message.getAttachments().get(0).files;
+                        for (ListIterator<AttachedFile> iterator2 = files.listIterator(); iterator2.hasNext();) {
+                            file = (AttachedFile) iterator2.next();
+                            System.out.println(""+file);
+                        }
+                    }
+                }
+            }while(messagesResponse.hasEntries());
 
+            //Provide folder name to which the file should be downloaded
+            boolean fileDownloaded = AvaamoDashBoard.getInstance().getAttachmentUtil().downloadAttachment(file, "downloads");
+            
+            boolean fileDownloaded2 = AvaamoDashBoard.getInstance().getAttachmentUtil().downloadAttachment("68488",
+                                                                            "Temp_file.jpeg", "downloads");
 
 		} catch (IOException e) {
 			e.printStackTrace();
